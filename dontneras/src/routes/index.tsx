@@ -1,0 +1,60 @@
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
+import LandingPage from "@/pages/landing/page";
+import SignInPage from "@/pages/auth/sign-in";
+import SignUpPage from "@/pages/auth/sign-up";
+import Dashboard from "@/pages/dashboard";
+
+const publicRoutes = [
+  {
+    path: "/",
+    element: <LandingPage />,
+  },
+  {
+    path: "/auth/sign-in",
+    element: <SignInPage />,
+  },
+  {
+    path: "/auth/sign-up",
+    element: <SignUpPage />,
+  },
+];
+
+const protectedRoutes = [
+  {
+    path: "/dashboard",
+    element: <Dashboard />, // Updated to use Dashboard component
+  },
+  {
+    path: "/dashboard/certificates",
+    element: <Navigate to="/dashboard" />, // Will be replaced with Certificates component
+  },
+  {
+    path: "/dashboard/shared",
+    element: <Navigate to="/dashboard" />, // Will be replaced with Shared Links component
+  },
+  {
+    path: "/dashboard/analytics",
+    element: <Navigate to="/dashboard" />, // Will be replaced with Analytics component
+  },
+  {
+    path: "/dashboard/profile",
+    element: <Navigate to="/dashboard" />, // Will be replaced with Profile component
+  },
+  {
+    path: "/dashboard/settings",
+    element: <Navigate to="/dashboard" />, // Will be replaced with Settings component
+  },
+];
+
+const router = createBrowserRouter([
+  ...publicRoutes,
+  ...protectedRoutes,
+  {
+    path: "*",
+    element: <Navigate to="/" />,
+  },
+]);
+
+export function Router() {
+  return <RouterProvider router={router} />;
+}

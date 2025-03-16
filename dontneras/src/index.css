@@ -1,0 +1,50 @@
+/* index.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+/* Tailwind CSS Directives (required for shadcn) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global font-face for Skyscapers */
+@font-face {
+  font-family: 'Skyscapers';
+  src: url('//2ttf.com/webfont/6IF8GLA3aiM/webfont.ttf') format('truetype');
+}
+
+/* Base styles */
+@layer base {
+  html {
+    font-family: 'Poppins', sans-serif; /* Default font, overridden where specified */
+    scroll-behavior: smooth; /* Smooth scrolling for parallax */
+  }
+
+  body {
+    background-color: #f8fafc; /* Light background for Tailwind's 'background' */
+    color: #1f2937; /* Dark text for Tailwind's 'foreground' */
+    line-height: 1.6;
+  }
+
+  /* Ensure full height for all sections */
+  #root, html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(90deg, #3b82f6, #9333ea);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}

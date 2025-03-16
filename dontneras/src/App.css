@@ -1,0 +1,51 @@
+/* App.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif; /* Fallback font */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+  
+  /* Enhance the main container */
+  .min-h-screen {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Style for the navbar */
+  nav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Floating images container */
+  main {
+    position: relative;
+  }
+  
+  /* Gradient holocircle additional styling */
+  .holocircle {
+    pointer-events: none; /* Prevent interaction with the circle */
+  }
+  
+  /* Feature card hover effect */
+  .bg-card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Custom scrollbar for a modern look */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
