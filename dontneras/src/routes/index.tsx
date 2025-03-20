@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom"
 import LandingPage from "@/pages/landing/page";
 import SignInPage from "@/pages/auth/sign-in";
 import SignUpPage from "@/pages/auth/sign-up";
+import OnboardingPage from "@/pages/onboarding";
 import Dashboard from "@/pages/dashboard";
 import Certificates from "@/pages/dashboard/certificates";
 import SharedLinks from "@/pages/dashboard/shared";
@@ -21,6 +22,10 @@ const publicRoutes = [
   {
     path: "/auth/sign-up",
     element: <SignUpPage />,
+  },
+  {
+    path: "/onboarding",
+    element: <OnboardingPage />,
   },
 ];
 

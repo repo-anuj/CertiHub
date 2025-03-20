@@ -7,13 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   BarChart2, 
-  TrendingUp, 
   Eye, 
   Share2, 
   Award, 
   Download, 
   Calendar, 
-  Clock,
   ArrowUpRight,
   ArrowDownRight,
   Users,

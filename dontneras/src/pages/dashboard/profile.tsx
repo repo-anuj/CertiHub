@@ -14,7 +14,6 @@ import {
   Upload, 
   Trash2, 
   Link, 
-  Shield, 
   Award,
   FileText,
   Clock

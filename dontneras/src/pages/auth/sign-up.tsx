@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 
 const SignUpPage = () => {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordStrength, setPasswordStrength] = useState(0);
@@ -12,8 +14,13 @@ const SignUpPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // TODO: Implement sign up logic
-    setTimeout(() => setIsLoading(false), 2000);
+    
+    // Simulate account creation process
+    setTimeout(() => {
+      setIsLoading(false);
+      // Redirect to onboarding page after successful sign-up
+      navigate("/onboarding");
+    }, 2000);
   };
 
   const checkPasswordStrength = (value: string) => {
