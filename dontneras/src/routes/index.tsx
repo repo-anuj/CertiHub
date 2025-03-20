@@ -3,6 +3,11 @@ import LandingPage from "@/pages/landing/page";
 import SignInPage from "@/pages/auth/sign-in";
 import SignUpPage from "@/pages/auth/sign-up";
 import Dashboard from "@/pages/dashboard";
+import Certificates from "@/pages/dashboard/certificates";
+import SharedLinks from "@/pages/dashboard/shared";
+import Analytics from "@/pages/dashboard/analytics";
+import Profile from "@/pages/dashboard/profile";
+import Settings from "@/pages/dashboard/settings";
 
 const publicRoutes = [
   {
@@ -26,23 +31,23 @@ const protectedRoutes = [
   },
   {
     path: "/dashboard/certificates",
-    element: <Navigate to="/dashboard" />, // Will be replaced with Certificates component
+    element: <Certificates />, // Will be replaced with Certificates component
   },
   {
     path: "/dashboard/shared",
-    element: <Navigate to="/dashboard" />, // Will be replaced with Shared Links component
+    element: <SharedLinks />, // Will be replaced with Shared Links component
   },
   {
     path: "/dashboard/analytics",
-    element: <Navigate to="/dashboard" />, // Will be replaced with Analytics component
+    element: <Analytics />, // Will be replaced with Analytics component
   },
   {
     path: "/dashboard/profile",
-    element: <Navigate to="/dashboard" />, // Will be replaced with Profile component
+    element: <Profile/>, // Will be replaced with Profile component
   },
   {
     path: "/dashboard/settings",
-    element: <Navigate to="/dashboard" />, // Will be replaced with Settings component
+    element: <Settings />, // Will be replaced with Settings component
   },
 ];
 

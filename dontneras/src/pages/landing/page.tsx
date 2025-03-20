@@ -263,7 +263,7 @@ const LandingPage: React.FC = () => {
             style={{
               top: `${15 + index * 18}%`,
               left: `${5 + index * 22}%`,
-              zIndex: -1,
+              zIndex: 0,
             }}
             whileHover={{ scale: 1.2, opacity: 0.3, transition: { duration: 0.3 } }}
           />
@@ -358,7 +358,7 @@ const LandingPage: React.FC = () => {
             <br className="md:hidden" />
             <span
               style={{ fontFamily: "AlternateFont" }}
-              className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-400 to-secondary"
+              className="bg-clip-text bg-gradient-to-r from-primary via-purple-400 to-secondary"
             >
               Organized & Shareable
             </span>
