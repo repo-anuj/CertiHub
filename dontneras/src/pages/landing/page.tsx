@@ -1,11 +1,14 @@
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Check, X, ChevronRight, Twitter, Instagram, Facebook, Linkedin, Github } from "lucide-react";
+import { Meteors } from "@/components/magicui/meteors";
+import { DotPattern } from "@/components/magicui/dot-pattern";
 
 // Unsplash images for floating effect (certificate-themed)
 const floatingImages: string[] = [
@@ -155,6 +158,12 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black overflow-hidden" ref={targetRef}>
+      <Meteors number={30} />
+      <DotPattern
+        className={cn(
+          "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]",
+        )}
+      />
       {/* Custom Font Style */}
       <style dangerouslySetInnerHTML={{ __html: `
         @font-face {
