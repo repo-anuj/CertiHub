@@ -19,6 +19,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 interface SidebarProps {
   className?: string;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 const navItems = [
@@ -30,26 +32,15 @@ const navItems = [
   { icon: <Settings size={20} />, label: "Settings", path: "/dashboard/settings" },
 ];
 
-export function Sidebar({ className }: SidebarProps) {
+export function Sidebar({ className, isOpen, setIsOpen }: SidebarProps) {
   const isMobile = useIsMobile();
-  const [isOpen, setIsOpen] = useState(!isMobile);
-  
-  // Update sidebar state when screen size changes
-  useEffect(() => {
-    setIsOpen(!isMobile);
-  }, [isMobile]);
   
   // Close sidebar when clicking outside on mobile
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (isMobile && isOpen) {
         const sidebar = document.getElementById('sidebar');
-        const toggleButton = document.getElementById('sidebar-toggle');
-        
-        if (sidebar && 
-            !sidebar.contains(event.target as Node) && 
-            toggleButton && 
-            !toggleButton.contains(event.target as Node)) {
+        if (sidebar && !sidebar.contains(event.target as Node)) {
           setIsOpen(false);
         }
       }
@@ -69,19 +60,6 @@ export function Sidebar({ className }: SidebarProps) {
   
   return (
     <>
-      {/* Mobile Toggle Button */}
-      {isMobile && (
-        <motion.button
-          id="sidebar-toggle"
-          className="fixed top-4 left-4 z-50 p-2 rounded-full bg-primary/20 text-white"
-          onClick={() => setIsOpen(!isOpen)}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </motion.button>
-      )}
-      
       {/* Backdrop for mobile */}
       <AnimatePresence>
         {isMobile && isOpen && (
@@ -97,16 +75,27 @@ export function Sidebar({ className }: SidebarProps) {
       
       {/* Sidebar */}
       <AnimatePresence>
-        {(isOpen || !isMobile) && (
+        {isOpen && (
           <motion.div
             id="sidebar"
-            className={`${isMobile ? 'w-[280px]' : 'w-64'} h-screen bg-black border-r border-white/10 flex flex-col fixed left-0 top-0 z-40 ${className}`}
+            className={`${isMobile ? 'w-[240px]' : 'w-56'} h-screen bg-black border-r border-white/10 flex flex-col fixed left-0 top-0 z-40 ${className}`}
             variants={sidebarVariants}
             initial={isMobile ? "closed" : "open"}
             animate="open"
             exit="closed"
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
+            {/* Toggle Button */}
+            {isMobile && (
+              <motion.button
+                className="absolute -right-10 top-4 p-2 rounded-full bg-primary/20 text-white"
+                onClick={() => setIsOpen(!isOpen)}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {isOpen ? <X size={20} /> : <Menu size={20} />}
+              </motion.button>
+            )}
           {/* Logo */}
           <div className="p-6">
             <div className="flex items-center gap-2">
@@ -126,19 +115,19 @@ export function Sidebar({ className }: SidebarProps) {
           <Separator className="bg-white/10" />
 
           {/* Navigation */}
-          <nav className="flex-1 py-6 px-3 space-y-1 overflow-y-auto">
+          <nav className="flex-1 py-4 px-2 space-y-0.5 overflow-y-auto">
             {navItems.map((item) => (
               <motion.div
                 key={item.label}
-                whileHover={{ x: 5 }}
+                whileHover={{ x: 3 }}
                 transition={{ duration: 0.2 }}
               >
                 <Link to={item.path} onClick={() => isMobile && setIsOpen(false)}>
                   <Button
                     variant="ghost"
-                    className="w-full justify-start text-white/70 hover:text-white hover:bg-white/10 py-2 px-3"
+                    className="w-full justify-start text-white/70 hover:text-white hover:bg-white/10 py-1.5 px-2 text-sm"
                   >
-                    <span className="mr-3 text-primary">{item.icon}</span>
+                    <span className="mr-2 text-primary">{item.icon}</span>
                     {item.label}
                   </Button>
                 </Link>
@@ -149,23 +138,23 @@ export function Sidebar({ className }: SidebarProps) {
           <Separator className="bg-white/10" />
 
           {/* Help and Logout */}
-          <div className="p-4 space-y-2">
-            <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
+          <div className="p-2 space-y-0.5">
+            <motion.div whileHover={{ x: 3 }} transition={{ duration: 0.2 }}>
               <Button
                 variant="ghost"
-                className="w-full justify-start text-white/70 hover:text-white hover:bg-white/10"
+                className="w-full justify-start text-white/70 hover:text-white hover:bg-white/10 py-1.5 px-2 text-sm"
               >
-                <HelpCircle size={20} className="mr-3 text-primary" />
+                <HelpCircle size={18} className="mr-2 text-primary" />
                 Help & Support
               </Button>
             </motion.div>
             
-            <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
+            <motion.div whileHover={{ x: 3 }} transition={{ duration: 0.2 }}>
               <Button
                 variant="ghost"
-                className="w-full justify-start text-white/70 hover:text-white hover:bg-white/10"
+                className="w-full justify-start text-white/70 hover:text-white hover:bg-white/10 py-1.5 px-2 text-sm"
               >
-                <LogOut size={20} className="mr-3 text-primary" />
+                <LogOut size={18} className="mr-2 text-primary" />
                 Logout
               </Button>
             </motion.div>
